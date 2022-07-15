@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .card
+        {
+            justify-content : center;
+        }
+    </style>
+    <title>Result</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">Flashcard Application</span>
+        <form action='{{ url_for("dashboard",user_name = user_name,deck_name = deck_name) }}' align = 'center'>
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Dashboard</button>
+        </form>
+    </nav>
+    <h2 class = 'title' align ='center'> Quiz Result</h2>
+    <div class="container">
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col-7" align = "center">
+          </br>
+            <div class="card text-center text-dark bg-light mb-3" style="max-width: 30rem;">
+                <div class="card-body">
+                  <h5 class="card-title">You scored {{score}} out of {{out_of}}.</h5>
+                </div>
+            </div>
+          </div>
+          <div class="col">
+          </div>
+    </div>
+
+
+        
+</body>
+</html>

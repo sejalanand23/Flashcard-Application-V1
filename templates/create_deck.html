@@ -10,15 +10,13 @@
           justify-content : center;
         }
       </style>
-    <title>Add Cards</title>
+    <title>Create Deck</title>
 </head>
 <body>
     <nav class="navbar navbar-light bg-light">
         <span class="navbar-brand mb-0 h1">Flashcard Application</span>
-        <form action='{{ url_for("dashboard",user_name = user_name,deck_name = deck_name) }}' align = 'center'>
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Dashboard</button>
-        </form>
       </nav>
+
       {% block content %}
       {% for message in get_flashed_messages() %}
       <div class="alert alert-primary" role="alert">
@@ -28,21 +26,14 @@
       {% block page_content %}{% endblock %}
   </div>
   {% endblock %}
-
-  
-
-  <form method = 'POST' action = '{{ url_for("add_cards",user_name = user_name,deck_name = deck_name) }}' align = "center">
+  <form method = 'POST' action = '{{ url_for("create_deck",user_name = user_name) }}' align = "center">
     <div class="form-row" align = "center">
       <div class="form-group">
-        <label for="card_front">Enter Card's Front</label>
-        <input type="text" class="form-control" name = "card_front" id = "card_front" autocomplete="off">
-      </div>
-      <div class="form-group">
-        <label for="card_back">Enter Card's Back</label>
-        <input type="text" class="form-control" name = "card_back" id = "card_back" autocomplete="off">
+        <label for="deck_name">Enter Deck's Name </label>
+        <input type="text" class="form-control" name = "deck_name" id = "deck_name" autocomplete="off">
       </div>
     </div>
-    <button type="submit" class="btn btn-primary">Add Card to Deck</button>
+    <button type="submit" class="btn btn-primary">Add Cards to Deck</button>
   </form>
 
 </body>

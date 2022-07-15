@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .form-row
+        {
+            justify-content : center;
+        }
+        /* [type='radio'] 
+        {
+        display: none; 
+        } */
+    </style>
+    <title>Quiz</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <span class="navbar-brand mb-0 h1">Flashcard Application</span>
+      </nav>
+      <div class="container ">
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col-7" align = "center">
+          </br>
+          <h2 class = 'title' align ='center'> Quiz for {{deck_name}} </h2>
+        </br>
+    </br>
+        <form method = 'POST' action = '/dashboard/{{user_name}}/{{deck_name}}/quiz'>
+          <div class="card text-center text-dark bg-light mb-3" style="max-width: 30rem;">
+            <div class="card-header">Card Front</div>
+            <div class="card-body">
+              <h5 class="card-title">{{card_front}}</h5>
+            </div>
+          </div>
+          <div class="card text-center text-dark bg-light mb-3" style="max-width: 30rem;">
+            <div class="card-header">Card Back</div>
+            <div class="card-body">
+              <h5 class="card-title">{{card_back}}</h5>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Next</button>
+        </form>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+</body>
+</html>

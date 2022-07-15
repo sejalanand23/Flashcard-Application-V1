@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Dashboard</title>
+</head>
+<body>
+  <nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">Flashcard Application</span>
+    <span class="navbar-text">
+      User logged in: {{user_name}} &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+    </span>
+    <form action='/logout' align = 'center'>
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Logout</button>
+    </form>
+  </nav>
+  <br><br>
+  <table align = "center" class = "table table-bordered">
+    <thead class="thead-light">
+      <tr>
+        <th>Deck Name</th>
+        <th>Last Reviewed at</th>
+        <th>Last score</th>
+        <th>Average Score</th>
+        <th>Edit Deck</th>
+        <th>Delete</th>
+        <th>Start Quiz</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for deck in decks %}
+        {% for score in score_info %}
+          {% if score['userUCR_foreignid'] == uid and score['deckUCR_foreignid'] == deck['deck_id']%}
+            <tr>
+              <td>{{ deck['deck_name'] }}</td> 
+              <td>{{score['time']}}</td>
+              <td>{{score['correct']}}</td>
+              <td>{{ deck['deck_average_score'] }}</td>
+              <td>
+                <form action='{{ url_for("edit_deck",user_name = user_name,deck_name = deck["deck_name"]) }}' align = 'center'>
+                  <button class="btn btn-outline-secondary" type="submit">Edit Deck</button>
+                </form>
+              </td>
+              <td>
+                <form action='/dashboard/{{user_name}}/{{deck["deck_name"]}}/delete_deck' align = 'center'>
+                  <button class="btn btn-outline-secondary" type="submit">Delete Deck</button>
+                </form>
+              </td>
+              <td>
+                <form action='/dashboard/{{user_name}}/{{deck["deck_name"]}}/quiz' align = 'center'>
+                  <button class="btn btn-outline-secondary" type="submit">Take Quiz</button>
+                </form>
+              </td>
+            </tr>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+  <form action='{{ url_for("create_deck",user_name = user_name) }}' align = 'center'>
+    <button class="btn btn-outline-secondary" type="submit">Create New Deck</button>
+</form>
+</body>
+</html>

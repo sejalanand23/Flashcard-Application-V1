@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <style>
+    .form-row{
+      justify-content : center;
+    }
+  </style>
+  <title>Login</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+      <span class="navbar-brand mb-0 h1">Flashcard Application</span>
+    </nav>
+
+    {% block content %}
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-primary" role="alert">
+        {{ message }}
+    {% endfor %}
+
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+        <div class="container ">
+          <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-7">
+            </br>
+            <h2 class = 'title' align ='center'> Login </h2>
+            <form class = "myform" method = 'POST' action = '/login' align = "center">
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="text" class="form-control" name = "username" id = "username" required placeholder="username" autocomplete="off">
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group">
+                  <input type="password" class="form-control" name = "password" id = "password" required placeholder="password" autocomplete="off">
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Sign in</button>
+            </form>
+            </div>
+            <div class="col">
+            </div>
+          </div>
+        
+</body>
+</html>
